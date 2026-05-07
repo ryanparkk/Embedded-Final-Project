@@ -22,6 +22,7 @@ entity PmodKYPD is
     Port ( 
 			  clk : in  STD_LOGIC;
 			  JA : inout  STD_LOGIC_VECTOR (7 downto 0); -- PmodKYPD is designed to be connected to JA
+           --an : out std_logic;
            an : out  STD_LOGIC_VECTOR (3 downto 0);   -- Controls which position of the seven segment display to display
            seg : out  STD_LOGIC_VECTOR (6 downto 0)); -- digit to display on the seven segment display 
 end PmodKYPD;
