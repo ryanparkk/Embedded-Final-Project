@@ -5,8 +5,8 @@
 
 
 ## Clock signal (125 MHz on Zybo)
-set_property -dict { PACKAGE_PIN L16   IOSTANDARD LVCMOS33 } [get_ports { clk }]; 
-create_clock -add -name sys_clk_pin -period 8.00 -waveform {0 4} [get_ports { clk }];
+set_property -dict { PACKAGE_PIN L16   IOSTANDARD LVCMOS33 } [get_ports { CLK }]; 
+create_clock -add -name sys_clk_pin -period 8.00 -waveform {0 4} [get_ports { CLK }];
 
 ## Pmod Header JA - Keypad Connections
 ## The Keypad Pmod uses 8 pins. 
@@ -42,25 +42,22 @@ set_property -dict { PACKAGE_PIN Y14   IOSTANDARD LVCMOS33 } [get_ports { an[2] 
 set_property -dict { PACKAGE_PIN T12   IOSTANDARD LVCMOS33 } [get_ports { an[3] }]; # JC9
 
 ##Pmod Header JD
-#set_property -dict { PACKAGE_PIN T14   IOSTANDARD LVCMOS33 } [get_ports { jd_p[0] }]; #IO_L5P_T0_34 Sch=JD1_P
-#set_property -dict { PACKAGE_PIN T15   IOSTANDARD LVCMOS33 } [get_ports { jd_n[0] }]; #IO_L5N_T0_34 Sch=JD1_N
-#set_property -dict { PACKAGE_PIN P14   IOSTANDARD LVCMOS33 } [get_ports { jd_p[1] }]; #IO_L6P_T0_34 Sch=JD2_P
-#set_property -dict { PACKAGE_PIN R14   IOSTANDARD LVCMOS33 } [get_ports { jd_n[1] }]; #IO_L6N_T0_VREF_34 Sch=JD2_N
-#set_property -dict { PACKAGE_PIN U14   IOSTANDARD LVCMOS33 } [get_ports { jd_p[2] }]; #IO_L11P_T1_SRCC_34 Sch=JD3_P
-#set_property -dict { PACKAGE_PIN U15   IOSTANDARD LVCMOS33 } [get_ports { jd_n[2] }]; #IO_L11N_T1_SRCC_34 Sch=JD3_N
-#set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports { jd_p[3] }]; #IO_L21P_T3_DQS_34 Sch=JD4_P
-#set_property -dict { PACKAGE_PIN V18   IOSTANDARD LVCMOS33 } [get_ports { jd_n[3] }]; #IO_L21N_T3_DQS_34 Sch=JD4_N
+
 
 
 ##Pmod Header JE
-#set_property -dict { PACKAGE_PIN V12   IOSTANDARD LVCMOS33 } [get_ports { je[0] }]; #IO_L4P_T0_34 Sch=JE1
-#set_property -dict { PACKAGE_PIN W16   IOSTANDARD LVCMOS33 } [get_ports { je[1] }]; #IO_L18N_T2_34 Sch=JE2
-#set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { je[2] }]; #IO_25_35 Sch=JE3
-#set_property -dict { PACKAGE_PIN H15   IOSTANDARD LVCMOS33 } [get_ports { je[3] }]; #IO_L19P_T3_35 Sch=JE4
-#set_property -dict { PACKAGE_PIN V13   IOSTANDARD LVCMOS33 } [get_ports { je[4] }]; #IO_L3N_T0_DQS_34 Sch=JE7
-#set_property -dict { PACKAGE_PIN U17   IOSTANDARD LVCMOS33 } [get_ports { je[5] }]; #IO_L9N_T1_DQS_34 Sch=JE8
-#set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports { je[6] }]; #IO_L20P_T3_34 Sch=JE9
-#set_property -dict { PACKAGE_PIN Y17   IOSTANDARD LVCMOS33 } [get_ports { je[7] }]; #IO_L7N_T1_34 Sch=JE10
+## Reset Button (BTN0) - Ensure name matches VHDL Top Level
+set_property -dict { PACKAGE_PIN K18 IOSTANDARD LVCMOS33 } [get_ports RST]
+
+## Pmod Header JE (OLED Connections)
+## Ensure these names match your PORT maps exactly!
+set_property -dict { PACKAGE_PIN V12 IOSTANDARD LVCMOS33 } [get_ports CS]
+set_property -dict { PACKAGE_PIN W16 IOSTANDARD LVCMOS33 } [get_ports SDIN]
+set_property -dict { PACKAGE_PIN J15 IOSTANDARD LVCMOS33 } [get_ports SCLK]
+set_property -dict { PACKAGE_PIN H15 IOSTANDARD LVCMOS33 } [get_ports DC]
+set_property -dict { PACKAGE_PIN V13 IOSTANDARD LVCMOS33 } [get_ports RES]
+set_property -dict { PACKAGE_PIN U17 IOSTANDARD LVCMOS33 } [get_ports VBAT]
+set_property -dict { PACKAGE_PIN T17 IOSTANDARD LVCMOS33 } [get_ports VDD]
 
 
 ##USB-OTG overcurrent detect pin
