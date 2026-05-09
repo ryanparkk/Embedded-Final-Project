@@ -8,10 +8,8 @@
 set_property -dict { PACKAGE_PIN L16   IOSTANDARD LVCMOS33 } [get_ports { CLK }]; 
 create_clock -add -name sys_clk_pin -period 8.00 -waveform {0 4} [get_ports { CLK }];
 
-## Pmod Header JA - Keypad Connections
-## The Keypad Pmod uses 8 pins. 
-## Bottom Row (Pins 1-4) = Columns (JA[0] to JA[3])
-## Top Row (Pins 7-10) = Rows (JA[4] to JA[7])
+## Pmod Header JA - keypad
+
 
 set_property -dict { PACKAGE_PIN N15   IOSTANDARD LVCMOS33 } [get_ports { JA[0] }]; # Pin 1
 set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { JA[1] }]; # Pin 2
@@ -22,11 +20,9 @@ set_property -dict { PACKAGE_PIN L15   IOSTANDARD LVCMOS33 } [get_ports { JA[5] 
 set_property -dict { PACKAGE_PIN J16   IOSTANDARD LVCMOS33 } [get_ports { JA[6] }]; # Pin 9
 set_property -dict { PACKAGE_PIN J14   IOSTANDARD LVCMOS33 } [get_ports { JA[7] }]; # Pin 10
 
-## Pmod Header JB & JC - Seven Segment Display (PmodSSD)
-## Assumes you are using a Digilent PmodSSD or similar 7-segment module
-## Mapping 'seg' vector (a-g) to JB and 'an' to JC as per your previous mapping
+## Pmod Header JB & JC - 7 segment
 
-# Segment Pins (a, b, c, d, e, f, g)
+
 set_property -dict { PACKAGE_PIN T20   IOSTANDARD LVCMOS33 } [get_ports { seg[0] }]; # JB1
 set_property -dict { PACKAGE_PIN U20   IOSTANDARD LVCMOS33 } [get_ports { seg[1] }]; # JB2
 set_property -dict { PACKAGE_PIN V20   IOSTANDARD LVCMOS33 } [get_ports { seg[2] }]; # JB3
@@ -35,7 +31,7 @@ set_property -dict { PACKAGE_PIN V15   IOSTANDARD LVCMOS33 } [get_ports { seg[4]
 set_property -dict { PACKAGE_PIN W15   IOSTANDARD LVCMOS33 } [get_ports { seg[5] }]; # JC2
 set_property -dict { PACKAGE_PIN T11   IOSTANDARD LVCMOS33 } [get_ports { seg[6] }]; # JC3
 
-# Anode/Digit Select Pins
+
 set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33 } [get_ports { an[0] }]; # JC4
 set_property -dict { PACKAGE_PIN W14   IOSTANDARD LVCMOS33 } [get_ports { an[1] }]; # JC7
 set_property -dict { PACKAGE_PIN Y14   IOSTANDARD LVCMOS33 } [get_ports { an[2] }]; # JC8
