@@ -42,32 +42,30 @@ begin
 	-- only display the leftmost digit
 	anode<="1110";
 	
-	process(clk)
-    begin
-        if rising_edge(clk) then
-            if DispVal /= "1111" and DispVal /= last_val and locked = '0' then
-                if DispVal /= "0000" then -- If wrong
-                    if count < 10 then
-                        count <= count + 1;
-                    else
-                        locked <= '1'; -- Locked out
-                    end if;
-                end if;
-            end if;
-            last_val <= DispVal;
-	end if;
-	end process;
 	
-	process(locked, DispVal)
-    begin
-        if locked = '1' then
-            segOut <= "1110110"; -- Always show 'X'
-        else
+	process(current_state, DispVal)
+begin
+    case current_state is 
+        when ACTIVE =>
+            
             case DispVal is
-                when "0000" => segOut <= "0111111"; -- Show '0'
-                when others => segOut <= "1110110"; -- Show 'X'
+                when "0000" => 
+                    segOut <= "0111111"; 
+                when "1111" =>
+                    segOut <= "0000000"; 
+                when others => 
+                    segOut <= "1110110"; 
+                    current_state <= LOCKED_OUT;
             end case;
-        end if;
-    end process;
+
+        when LOCKED_OUT =>
+            
+            segOut <= "1110110";
+
+        when others =>
+            
+            segOut <= "1110110"; 
+    end case;
+end process;
 end Behavioral;
 
