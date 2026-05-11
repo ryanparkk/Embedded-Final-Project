@@ -42,11 +42,10 @@ set_property -dict { PACKAGE_PIN T12   IOSTANDARD LVCMOS33 } [get_ports { an[3] 
 
 
 ##Pmod Header JE
-## Reset Button (BTN0) - Ensure name matches VHDL Top Level
 set_property -dict { PACKAGE_PIN K18 IOSTANDARD LVCMOS33 } [get_ports RST]
 
 ## Pmod Header JE (OLED Connections)
-## Ensure these names match your PORT maps exactly!
+
 set_property -dict { PACKAGE_PIN V12 IOSTANDARD LVCMOS33 } [get_ports CS]
 set_property -dict { PACKAGE_PIN W16 IOSTANDARD LVCMOS33 } [get_ports SDIN]
 set_property -dict { PACKAGE_PIN J15 IOSTANDARD LVCMOS33 } [get_ports SCLK]
